@@ -1,11 +1,34 @@
 package com.example.appPedidos.modelos;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
+
+import java.util.List;
+
+@Entity
+@Table(name = "repartidor_tabla")
 public class Repartidor {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_repartidor")
     private Integer id;
+
+    @Column(name = "nombre", length = 100, nullable = false)
     private String nombre;
+
+    @Column(name = "telefono", length = 20, nullable = false)
     private String telefono;
+
+    @Column(name = "correo_electronico", length = 150, unique = true,nullable = false)
     private String correo;
+
+    @Column(name = "vehiculo", length = 50, nullable = false)
     private String vehiculo;
+
+    @OneToMany(mappedBy = "repartidor")
+    @JsonManagedReference
+    private List<Entrega> entregas;
 
     public Repartidor() {
     }

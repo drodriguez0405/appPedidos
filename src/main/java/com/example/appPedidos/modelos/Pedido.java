@@ -1,12 +1,46 @@
 package com.example.appPedidos.modelos;
 
 import com.example.appPedidos.ayudas.enums.PedidoEnum;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.*;
 
+@Entity
+@Table(name = "pedido_tabla")
 public class Pedido {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_pedido")
     private Integer id;
+
+    @Column(name = "fecha_pedido",columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP",nullable = false)
     private String fecha;
+
+    @Column(name = "total_pedido",precision = 10,scale = 2,nullable = false)
     private double total;
+
+    @Column(name = "estado", columnDefinition = "ENUM('pendiente', 'en camino', 'entregado') DEFAULT 'pendiente'")
     private PedidoEnum estado;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_usuario", referencedColumnName = "id_usuario")
+    @JsonBackReference
+    private Usuario usuario;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_pago", referencedColumnName = "id_pago")
+    @JsonBackReference
+    private Pago pago;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_tienda", referencedColumnName = "id_tienda")
+    @JsonBackReference
+    private Tienda tienda;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_detalle", referencedColumnName = "id_detalle")
+    @JsonBackReference
+    private Detalle detalle;
 
     public Pedido() {
     }

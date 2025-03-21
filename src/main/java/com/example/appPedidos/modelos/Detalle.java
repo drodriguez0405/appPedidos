@@ -1,10 +1,28 @@
 package com.example.appPedidos.modelos;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
+
+import java.util.List;
+
+@Entity
+@Table(name="detalle_tabla")
 public class Detalle {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_detalle")
     private Integer id;
+
+    @Column(name = "cantidad",nullable = false)
     private int cantidad;
+
+    @Column(name = "subtotal",precision = 10,scale = 2,nullable = false)
     private double subtotal;
 
+    @OneToMany(mappedBy = "detalle")
+    @JsonManagedReference
+    private List<Pedido> pedidos;
+    
     public Detalle() {
     }
 

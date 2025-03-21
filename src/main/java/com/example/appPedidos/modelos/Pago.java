@@ -2,12 +2,32 @@ package com.example.appPedidos.modelos;
 
 import com.example.appPedidos.ayudas.enums.PagoEstadoEnum;
 import com.example.appPedidos.ayudas.enums.PagoMetodoEnum;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 
+import java.util.List;
+
+@Entity
+@Table(name = "pago_tabla")
 public class Pago {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_pago")
     private Integer id;
+
+    @Column(name = "fecha_pago",columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private String fechaPago;
+
+    @Column(name = "estado_pago", columnDefinition =  "ENUM('pendiente', 'fallido', 'completado') DEFAULT 'pendiente'")
     private PagoEstadoEnum estado;
+
+    @Column(name = "metodo_pago",nullable = false)
     private PagoMetodoEnum metodo;
+
+    @OneToMany(mappedBy = "pago")
+    @JsonManagedReference
+    private List<Pedido> pedidos;
 
     public Pago() {
     }

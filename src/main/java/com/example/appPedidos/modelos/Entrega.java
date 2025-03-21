@@ -1,11 +1,28 @@
 package com.example.appPedidos.modelos;
 
 import com.example.appPedidos.ayudas.enums.EntregaEstadoEnum;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.*;
 
+@Entity
+@Table(name="entrega_tabla")
 public class Entrega {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_entrega")
     private Integer id;
+
+    @Column(name = "fecha_entrega",columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private String fechaEntrega;
+
+    @Column(name = "estado_entrega", columnDefinition =  "ENUM('asignado', 'en camino', 'entregado') DEFAULT 'asignado'")
     private EntregaEstadoEnum estadoEntrega;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_repartidor", referencedColumnName = "id_repartidor")
+    @JsonBackReference
+    private Repartidor repartidor;
 
     public Entrega() {
     }
