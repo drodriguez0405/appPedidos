@@ -1,11 +1,33 @@
 package com.example.appPedidos.modelos;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.*;
+
+@Entity
+@Table(name="direcccion_tabla")
 public class Direccion {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_direccion")
     private Integer id;
+
+    @Column(name = "calle", length = 255, nullable = false)
     private String calle;
+
+    @Column(name = "ciudad", length = 100, nullable = false)
     private String ciudad;
+
+    @Column(name = "codigo_postal", length = 20, nullable = false)
     private String codigoPostal;
+
+    @Column(name = "pais", length = 50, nullable = false)
     private String pais;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_usuario", referencedColumnName = "id_usuario")
+    @JsonBackReference
+    private Usuario usuario;
 
     public Direccion() {
     }
