@@ -13,7 +13,7 @@ public class UsuarioServicio {
     @Autowired
     IUsuarioRepositorio repositorio;
 
-    //Listar los metodos que activaran las consultans en la bd
+    //Listar los metodos que activaran las consultas en la bd
 
     //guardar
     public Usuario guardarUsuario(Usuario datosUsuario)throws Exception{
