@@ -40,7 +40,7 @@ public class DireccionServicio {
             if (direccionBuscada.isPresent()) {
                 return direccionBuscada.get();
             } else {
-                throw new Exception("La dirección consultada no está en BD");
+                throw new Exception("la direccion consultada no esta en BD");
             }
         } catch (Exception error) {
             throw new Exception(error.getMessage());
@@ -58,7 +58,7 @@ public class DireccionServicio {
                 direccionBuscada.get().setPais(datosDireccion.getPais());
                 return this.repositorio.save(direccionBuscada.get());
             } else {
-                throw new Exception("Dirección no encontrada");
+                throw new Exception("direccion no encontrada");
             }
         } catch (Exception error) {
             throw new Exception(error.getMessage());
@@ -73,7 +73,7 @@ public class DireccionServicio {
                 this.repositorio.deleteById(id);
                 return true;
             } else {
-                throw new Exception("Dirección no encontrada");
+                throw new Exception("direccion no encontrada");
             }
         } catch (Exception error) {
             throw new Exception(error.getMessage());

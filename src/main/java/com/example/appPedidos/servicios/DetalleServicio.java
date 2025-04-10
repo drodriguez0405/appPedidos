@@ -38,7 +38,7 @@ public class DetalleServicio {
             if (detalleBuscado.isPresent()) {
                 return detalleBuscado.get();
             } else {
-                throw new Exception("El detalle consultado no está en BD");
+                throw new Exception("el detalle consultado no esta en BD");
             }
         } catch (Exception error) {
             throw new Exception(error.getMessage());
@@ -54,7 +54,7 @@ public class DetalleServicio {
                 detalleBuscado.get().setSubtotal(datosDetalle.getSubtotal());
                 return this.repositorio.save(detalleBuscado.get());
             } else {
-                throw new Exception("Detalle no encontrado");
+                throw new Exception("detalle no encontrado");
             }
         } catch (Exception error) {
             throw new Exception(error.getMessage());
@@ -69,7 +69,7 @@ public class DetalleServicio {
                 this.repositorio.deleteById(id);
                 return true;
             } else {
-                throw new Exception("Detalle no encontrado");
+                throw new Exception("detalle no encontrado");
             }
         } catch (Exception error) {
             throw new Exception(error.getMessage());

@@ -38,7 +38,7 @@ public class PagoServicio {
             if (pagoBuscado.isPresent()) {
                 return pagoBuscado.get();
             } else {
-                throw new Exception("El pago consultado no está en BD");
+                throw new Exception("el pago consultado no esta en BD");
             }
         } catch (Exception error) {
             throw new Exception(error.getMessage());
@@ -55,7 +55,7 @@ public class PagoServicio {
                 pagoBuscado.get().setMetodo(datosPago.getMetodo());
                 return this.repositorio.save(pagoBuscado.get());
             } else {
-                throw new Exception("Pago no encontrado");
+                throw new Exception("pago no encontrado");
             }
         } catch (Exception error) {
             throw new Exception(error.getMessage());
@@ -70,7 +70,7 @@ public class PagoServicio {
                 this.repositorio.deleteById(id);
                 return true;
             } else {
-                throw new Exception("Pago no encontrado");
+                throw new Exception("pago no encontrado");
             }
         } catch (Exception error) {
             throw new Exception(error.getMessage());

@@ -1,26 +1,26 @@
 package com.example.appPedidos.controladores;
 
-import com.example.appPedidos.modelos.Usuario;
-import com.example.appPedidos.servicios.UsuarioServicio;
+import com.example.appPedidos.modelos.Producto;
+import com.example.appPedidos.servicios.ProductoServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/usuario")
-public class ControladorUsuario {
+@RequestMapping("/producto")
+public class ControladorProducto {
 
     @Autowired
-    UsuarioServicio usuarioServicio;
+    ProductoServicio productoServicio;
 
     //Guardar
     @PostMapping
-    public ResponseEntity<?> guardar(@RequestBody Usuario datosPeticion) {
+    public ResponseEntity<?> guardar(@RequestBody Producto datosPeticion) {
         try {
             return ResponseEntity
                     .status(HttpStatus.CREATED)
-                    .body(this.usuarioServicio.guardarUsuario(datosPeticion));
+                    .body(this.productoServicio.guardarProducto(datosPeticion));
         } catch (Exception error) {
             return ResponseEntity
                     .status(HttpStatus.BAD_REQUEST)
@@ -28,14 +28,13 @@ public class ControladorUsuario {
         }
     }
 
-    //BUscar
+    //Buscar todos
     @GetMapping
     public ResponseEntity<?> buscarTodos() {
         try {
             return ResponseEntity
                     .status(HttpStatus.OK)
-                    .body(this.usuarioServicio.buscarTodosUsuarios());
-
+                    .body(this.productoServicio.buscarTodosProductos());
         } catch (Exception error) {
             return ResponseEntity
                     .status(HttpStatus.BAD_REQUEST)
@@ -49,7 +48,7 @@ public class ControladorUsuario {
         try {
             return ResponseEntity
                     .status(HttpStatus.OK)
-                    .body(this.usuarioServicio.buscarUsuarioPorId(id));
+                    .body(this.productoServicio.buscarProductoPorId(id));
         } catch (Exception error) {
             return ResponseEntity
                     .status(HttpStatus.BAD_REQUEST)
@@ -59,11 +58,11 @@ public class ControladorUsuario {
 
     //Modificar
     @PutMapping("/{id}")
-    public ResponseEntity<?> modificar(@PathVariable Integer id, @RequestBody Usuario datos) {
+    public ResponseEntity<?> modificar(@PathVariable Integer id, @RequestBody Producto datos) {
         try {
             return ResponseEntity
                     .status(HttpStatus.OK)
-                    .body(this.usuarioServicio.modificarUsuario(id, datos));
+                    .body(this.productoServicio.modificarProducto(id, datos));
         } catch (Exception error) {
             return ResponseEntity
                     .status(HttpStatus.BAD_REQUEST)
@@ -77,7 +76,7 @@ public class ControladorUsuario {
         try {
             return ResponseEntity
                     .status(HttpStatus.OK)
-                    .body(this.usuarioServicio.eliminarUsuario(id));
+                    .body(this.productoServicio.eliminarProducto(id));
         } catch (Exception error) {
             return ResponseEntity
                     .status(HttpStatus.BAD_REQUEST)

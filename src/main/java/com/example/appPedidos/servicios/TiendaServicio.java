@@ -38,7 +38,7 @@ public class TiendaServicio {
             if (tiendaBuscada.isPresent()) {
                 return tiendaBuscada.get();
             } else {
-                throw new Exception("La tienda consultada no está en BD");
+                throw new Exception("la tienda consultada no esta en BD");
             }
         } catch (Exception error) {
             throw new Exception(error.getMessage());
@@ -55,7 +55,7 @@ public class TiendaServicio {
                 tiendaBuscada.get().setCategoria(datosTienda.getCategoria());
                 return this.repositorio.save(tiendaBuscada.get());
             } else {
-                throw new Exception("Tienda no encontrada");
+                throw new Exception("tienda no encontrada");
             }
         } catch (Exception error) {
             throw new Exception(error.getMessage());
@@ -70,7 +70,7 @@ public class TiendaServicio {
                 this.repositorio.deleteById(id);
                 return true;
             } else {
-                throw new Exception("Tienda no encontrada");
+                throw new Exception("tienda no encontrada");
             }
         } catch (Exception error) {
             throw new Exception(error.getMessage());

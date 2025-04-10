@@ -38,7 +38,7 @@ public class ProductoServicio {
             if (productoBuscado.isPresent()) {
                 return productoBuscado.get();
             } else {
-                throw new Exception("El producto consultado no está en BD");
+                throw new Exception("el producto consultado no esta en BD");
             }
         } catch (Exception error) {
             throw new Exception(error.getMessage());
@@ -55,7 +55,7 @@ public class ProductoServicio {
                 productoBuscado.get().setDescripcion(datosProducto.getDescripcion());
                 return this.repositorio.save(productoBuscado.get());
             } else {
-                throw new Exception("Producto no encontrado");
+                throw new Exception("producto no encontrado");
             }
         } catch (Exception error) {
             throw new Exception(error.getMessage());
@@ -70,7 +70,7 @@ public class ProductoServicio {
                 this.repositorio.deleteById(id);
                 return true;
             } else {
-                throw new Exception("Producto no encontrado");
+                throw new Exception("producto no encontrado");
             }
         } catch (Exception error) {
             throw new Exception(error.getMessage());

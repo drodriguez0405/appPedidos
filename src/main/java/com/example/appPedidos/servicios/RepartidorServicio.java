@@ -38,7 +38,7 @@ public class RepartidorServicio {
             if (repartidorBuscado.isPresent()) {
                 return repartidorBuscado.get();
             } else {
-                throw new Exception("El repartidor consultado no está en BD");
+                throw new Exception("el repartidor consultado no esta en BD");
             }
         } catch (Exception error) {
             throw new Exception(error.getMessage());
@@ -56,7 +56,7 @@ public class RepartidorServicio {
                 repartidorBuscado.get().setVehiculo(datosRepartidor.getVehiculo());
                 return this.repositorio.save(repartidorBuscado.get());
             } else {
-                throw new Exception("Repartidor no encontrado");
+                throw new Exception("repartidor no encontrado");
             }
         } catch (Exception error) {
             throw new Exception(error.getMessage());
@@ -71,7 +71,7 @@ public class RepartidorServicio {
                 this.repositorio.deleteById(id);
                 return true;
             } else {
-                throw new Exception("Repartidor no encontrado");
+                throw new Exception("repartidor no encontrado");
             }
         } catch (Exception error) {
             throw new Exception(error.getMessage());

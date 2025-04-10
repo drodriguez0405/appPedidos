@@ -38,7 +38,7 @@ public class PedidoServicio {
             if (pedidoBuscado.isPresent()) {
                 return pedidoBuscado.get();
             } else {
-                throw new Exception("El pedido consultado no está en BD");
+                throw new Exception("el pedido consultado no esta en BD");
             }
         } catch (Exception error) {
             throw new Exception(error.getMessage());
@@ -55,7 +55,7 @@ public class PedidoServicio {
                 pedidoBuscado.get().setEstado(datosPedido.getEstado());
                 return this.repositorio.save(pedidoBuscado.get());
             } else {
-                throw new Exception("Pedido no encontrado");
+                throw new Exception("pedido no encontrado");
             }
         } catch (Exception error) {
             throw new Exception(error.getMessage());
@@ -70,7 +70,7 @@ public class PedidoServicio {
                 this.repositorio.deleteById(id);
                 return true;
             } else {
-                throw new Exception("Pedido no encontrado");
+                throw new Exception("pedido no encontrado");
             }
         } catch (Exception error) {
             throw new Exception(error.getMessage());

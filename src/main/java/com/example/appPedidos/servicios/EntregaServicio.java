@@ -38,7 +38,7 @@ public class EntregaServicio {
             if (entregaBuscada.isPresent()) {
                 return entregaBuscada.get();
             } else {
-                throw new Exception("La entrega consultada no está en BD");
+                throw new Exception("la entrega consultada no esta en BD");
             }
         } catch (Exception error) {
             throw new Exception(error.getMessage());
@@ -54,7 +54,7 @@ public class EntregaServicio {
                 entregaBuscada.get().setEstadoEntrega(datosEntrega.getEstadoEntrega());
                 return this.repositorio.save(entregaBuscada.get());
             } else {
-                throw new Exception("Entrega no encontrada");
+                throw new Exception("entrega no encontrada");
             }
         } catch (Exception error) {
             throw new Exception(error.getMessage());
@@ -69,7 +69,7 @@ public class EntregaServicio {
                 this.repositorio.deleteById(id);
                 return true;
             } else {
-                throw new Exception("Entrega no encontrada");
+                throw new Exception("entrega no encontrada");
             }
         } catch (Exception error) {
             throw new Exception(error.getMessage());
