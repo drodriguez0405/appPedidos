@@ -16,7 +16,7 @@ public class Detalle {
     @Column(name = "cantidad",nullable = false)
     private int cantidad;
 
-    @Column(name = "subtotal",precision = 10,scale = 2,nullable = false)
+    @Column(name = "subtotal",nullable = false)
     private double subtotal;
 
     @OneToMany(mappedBy = "detalle")

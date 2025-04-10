@@ -16,7 +16,7 @@ public class Pedido {
     @Column(name = "fecha_pedido",columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP",nullable = false)
     private String fecha;
 
-    @Column(name = "total_pedido",precision = 10,scale = 2,nullable = false)
+    @Column(name = "total_pedido",nullable = false)
     private double total;
 
     @Column(name = "estado", columnDefinition = "ENUM('pendiente', 'en camino', 'entregado') DEFAULT 'pendiente'")
